@@ -1,7 +1,10 @@
 package payroll;
 
 import org.springframework.cache.annotation.CachePut;
+import org.springframework.hateoas.EntityModel;
 import org.springframework.web.bind.annotation.*;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 import java.util.List;
 
@@ -26,10 +29,22 @@ public class EmployeeController {
     }
 
     // Single Item
+//    @GetMapping("/employees/{id}")
+//    Employee one(@PathVariable Long id) {
+        // Get A Employee
+//        return repository.findById(id)
+//                .orElseThrow(() -> new EmployeeNotFoundException(id));
+//    }
+
+    // Getting a single item resource
     @GetMapping("/employees/{id}")
-    Employee one(@PathVariable Long id) {
-        return repository.findById(id)
+    EntityModel<Employee> one(@PathVariable Long id) {
+        Employee employee = repository.findById(id)
                 .orElseThrow(() -> new EmployeeNotFoundException(id));
+
+        return new EntityModel<>(employee,
+                linkTo(methodOn(EmployeeController.class).one(id)).withSelfRel(),
+                linkTo(methodOn(EmployeeController.class).all()).withRel("employees"));
     }
 
     @PutMapping("/employees/{id}")
