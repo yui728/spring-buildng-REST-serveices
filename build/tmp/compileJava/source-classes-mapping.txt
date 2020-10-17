@@ -1,14 +1,16 @@
+payroll/Employee.java
+ payroll.Employee
 payroll/EmployeeRepository.java
  payroll.EmployeeRepository
 payroll/EmployeeNotFoundException.java
  payroll.EmployeeNotFoundException
 payroll/LoadDatabase.java
  payroll.LoadDatabase
-payroll/EmployeeController.java
- payroll.EmployeeController
-payroll/PayrollApplication.java
- payroll.PayrollApplication
 payroll/EmployeeNotFoundAdvice.java
  payroll.EmployeeNotFoundAdvice
-payroll/Employee.java
- payroll.Employee
+payroll/PayrollApplication.java
+ payroll.PayrollApplication
+payroll/EmployeeResourceAssembler.java
+ payroll.EmployeeResourceAssembler
+payroll/EmployeeController.java
+ payroll.EmployeeController
